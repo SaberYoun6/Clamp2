@@ -6,9 +6,17 @@ extern crate compare;
 use compare::{Compare };
 use std::cmp::Ordering;
 use std::cmp::PartialOrd;
-struct Clamp<T>(T);
-fn clamp( v :T, lo : T, hi : T) -> T {
-    let cmp = T();  
-    return  assert!(hi.compares_ne(hi,lo),"{:?}= hi, {:?}=low",hi,lo),
-    v.compares_lt(v,lo) ? lo : hi.compares_gt(hi,v) ? hi : v;
+struct Clamp<T>{
+    v:T,
+    lo:T,
+    hi:T,
+}
+impl <T> Clamp<T>{
+
+    fn clamp( v :T, lo : T, hi : T) -> T {   
+        let cmp = assert!(compares_ne(hi,lo),"{:?}= hi, {:?}=low",hi,lo);
+        let cmp2 = compares_lt(v,lo) ?lo : .compares_gt(hi,v) ?hi : v;
+        let ret = cmp , cmp2;
+        return ret;
+    }
 }
