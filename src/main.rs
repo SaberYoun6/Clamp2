@@ -3,7 +3,7 @@
  // this will also be the first cargo that i will actaul upload to the cargo page 
  // I need clamp to continue 
 extern crate compare;
-use compare::{Compare };
+use compare::{Compare, Natural };
 use std::cmp::Ordering;
 use std::cmp::PartialOrd;
 struct Clamp<T>{
@@ -13,15 +13,20 @@ struct Clamp<T>{
 }
 impl <T> Clamp<T>{
     fn clamp( v :T, lo : T, hi : T) -> T {   
-        let cmp = assert!(compares_ne(hi,lo),"{:?}= hi, {:?}=low",hi,lo);
-        if compares_lt(v,lo){
+        let cmp2 = v;
+        let comp = natural();
+        let cmp = assert!(comp.compares_ne(hi,lo),"{:?}= hi, {:?}=low",hi,lo);
+        if comp.compares_lt(v,lo){
             cmp2 = lo; 
-        } else if compares_lt(hi,v){
+        } else if comp.compares_lt(hi,v){
             cmp2=  hi;
         } else {
             cmp2 = v;
         }
-        let ret = cmp :: cmp2;
+        let ret = cmp.cmp2;
         return ret;
     }
+}
+fn main () {
+    clamp(0.01,0.0,25.02);
 }
