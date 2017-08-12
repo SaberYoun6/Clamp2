@@ -3,7 +3,7 @@
  // this will also be the first cargo that i will actaul upload to the cargo page 
  // I need clamp to continue 
 extern crate compare;
-use compare::{Compare, Natural };
+use compare::{Compare, natural };
 use std::cmp::Ordering;
 use std::cmp::PartialOrd;
 struct Clamp<T>{
