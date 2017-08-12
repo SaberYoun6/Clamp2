@@ -15,7 +15,7 @@ impl <T> Clamp<T>{
     fn clamp( v :T, lo : T, hi : T) -> T {   
         let cmp = assert!(compares_ne(hi,lo),"{:?}= hi, {:?}=low",hi,lo);
         let cmp2 = compares_lt(v,lo) ? : compares_lt(hi,v) -> hi : v;
-        let ret = cmp ? : cmp2;
+        let ret = cmp :: cmp2;
         return ret;
     }
 }
