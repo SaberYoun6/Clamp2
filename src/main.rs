@@ -6,21 +6,27 @@ extern crate compare;
 use compare::{Compare, natural };
 use std::cmp::Ordering;
 use std::cmp::PartialOrd;
-struct Clamp<T>{
+use std::iter::Iterator;
+use 
+struct Clamp<T: Copy>{
     v:T,
     lo:T,
     hi:T,
 }
 impl <T> Clamp<T>{
-    fn clamp( v :T, lo : T, hi : T) -> T {   
-        let cmp2 = v;
-        let comp = natural();
-        let cmp = assert!(comp.compares_ne(hi,lo),"{:?}= hi, {:?}=low",hi,lo);
-        if comp.compares_lt(v,lo){
+    fn clamp( v : T, lo : T, hi : T) -> T 
+    where T: Float 
+    {   
+        let cmp2 = T::zero();
+        let cmp = assert!(hi != lo,"{:?}= hi, {:?}=low",hi,lo);
+        if v < lo
+        {
             cmp2 = lo; 
-        } else if comp.compares_lt(hi,v){
+        } else if hi < v
+        {
             cmp2=  hi;
-        } else {
+        } else 
+        {
             cmp2 = v;
         }
         let ret = cmp.cmp2;
@@ -28,5 +34,6 @@ impl <T> Clamp<T>{
     }
 }
 fn main () {
-    clamp(0.01,0.0,25.02);
+    let x = Clamp( v: 1f64, lo:2f64, hi:1f64);
+    println!("{}", x.clamp());
 }
