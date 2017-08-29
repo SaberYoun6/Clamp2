@@ -4,4 +4,3 @@ version = "0.1.0"
 authors = ["yuriprym <samuel.young.103@gmail.com>"]
 
 [dependencies]
-compare= "0.1.0"
